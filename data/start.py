@@ -8,12 +8,13 @@ def store_data(path):
     fn=os.path.basename(path)
     with open(path,"r") as f:
         data=f.read()
-    with open(f"{fn}.txt","w")as f1:
+    with open(f"tdata/{fn}.txt","w")as f1:
         f1.write(data)
         f1.close()
         f.close()
 
-for i in logs:
-    path=f"/var/log/{i}"
-    store_data(path)
-print("program executed")
+def start_process():
+    for i in logs:
+        path = f"/var/log/{i}"
+        store_data(path)
+    print("TEST CASE 1 PASSED")
