@@ -13,8 +13,18 @@ def store_data(path):
         f1.close()
         f.close()
 
+def delete_logs(path):
+    try:
+        if os.path.exists(path):
+            os.remove(path)
+        else:
+            print("File not found: {path}")
+    except PermissionError:
+            print(f"Permission denied: {path} (try running as sudo)")
+
 def start_process():
     for i in logs:
         path = f"/var/log/{i}"
         store_data(path)
+        delete_logs(path)
     print("TEST CASE 1 PASSED")
